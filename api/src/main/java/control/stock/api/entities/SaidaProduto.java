@@ -3,22 +3,24 @@ package control.stock.api.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-
 @Entity
-@Table(name = "tb_saidaProdutos")
+@Table(name = "tb_saida_produto")
 public class SaidaProduto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
     @JoinColumn(nullable = false)
     private Produto produto;
+
     @Column(nullable = false)
     private Integer quantidade;
+
     @Column(nullable = false)
     private LocalDateTime dataSaida;
 
-    public SaidaProduto(){
+    public SaidaProduto() {
     }
 
     public SaidaProduto(Long id, Produto produto, Integer quantidade, LocalDateTime dataSaida) {

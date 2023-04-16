@@ -14,22 +14,14 @@ public class Produto {
     @Column(nullable = false)
     private String descricao;
     @Column(nullable = false)
-    private LocalDateTime criadoEm;
-    @Column(nullable = false)
     private Integer quantidadeMin;
     @Column(nullable = false)
     private Integer quantidadeMax;
 
+    @ManyToOne
+    @JoinColumn(name = "entradaProduto_id")
+    private EntradaProduto entradaProduto;
     public Produto(){
-    }
-
-    public Produto(Long id, String name, String descricao, LocalDateTime criadoEm, Integer quantidadeMin, Integer quantidadeMax) {
-        this.id = id;
-        this.name = name;
-        this.descricao = descricao;
-        this.criadoEm = LocalDateTime.now();
-        this.quantidadeMin = quantidadeMin;
-        this.quantidadeMax = quantidadeMax;
     }
 
     public Long getId() {
@@ -54,14 +46,6 @@ public class Produto {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public LocalDateTime getCriadoEm() {
-        return criadoEm;
-    }
-
-    public void setCriadoEm(LocalDateTime criadoEm) {
-        this.criadoEm = criadoEm;
     }
 
     public Integer getQuantidadeMin() {
