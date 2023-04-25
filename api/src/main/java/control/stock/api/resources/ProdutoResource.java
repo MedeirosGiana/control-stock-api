@@ -1,4 +1,4 @@
-package control.stock.api.controller;
+package control.stock.api.resources;
 
 import control.stock.api.entities.Produto;
 import control.stock.api.repository.ProdutoRepository;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/produtos")
-public class ProdutoController {
+public class ProdutoResource {
 
     @Autowired
     private ProdutoRepository repository;

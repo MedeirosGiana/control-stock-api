@@ -3,6 +3,7 @@ package control.stock.api.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tb_entrada_produtos")
@@ -69,5 +70,29 @@ public class EntradaProduto {
 
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
+    }
+
+    @Override
+    public String toString() {
+        return "EntradaProduto{" +
+                "id=" + id +
+                ", produto=" + produto +
+                ", dataEntrada=" + dataEntrada +
+                ", precoUnitario=" + precoUnitario +
+                ", quantidade=" + quantidade +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EntradaProduto that = (EntradaProduto) o;
+        return id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

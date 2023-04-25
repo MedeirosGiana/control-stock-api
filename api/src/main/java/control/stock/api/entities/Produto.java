@@ -2,7 +2,8 @@ package control.stock.api.entities;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.util.Objects;
+
 @Entity
 @Table(name = "tb_produtos")
 public class Produto {
@@ -22,6 +23,15 @@ public class Produto {
     @JoinColumn(name = "entradaProduto_id")
     private EntradaProduto entradaProduto;
     public Produto(){
+    }
+
+    public Produto(Long id, String name, String descricao, Integer quantidadeMin, Integer quantidadeMax, EntradaProduto entradaProduto) {
+        this.id = id;
+        this.name = name;
+        this.descricao = descricao;
+        this.quantidadeMin = quantidadeMin;
+        this.quantidadeMax = quantidadeMax;
+        this.entradaProduto = entradaProduto;
     }
 
     public Long getId() {
@@ -62,5 +72,31 @@ public class Produto {
 
     public void setQuantidadeMax(Integer quantidadeMax) {
         this.quantidadeMax = quantidadeMax;
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", quantidadeMin=" + quantidadeMin +
+                ", quantidadeMax=" + quantidadeMax +
+                ", entradaProduto=" + entradaProduto +
+                '}';
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Produto produto = (Produto) o;
+        return id.equals(produto.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
